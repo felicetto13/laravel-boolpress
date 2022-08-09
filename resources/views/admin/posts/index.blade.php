@@ -3,8 +3,8 @@
 @section('page_title', "Gestione Posts")
     
 @section('page_content')
-    <div class="container">
-        <table>
+    <div class="p-5 mx-auto">
+        <table >
             <thead>
                 <tr>
                     <th>ID</th>
@@ -19,9 +19,20 @@
                 <tr>
                     <td>{{ $post["id"] }}</td>
                     <td>{{ $post["title"] }}</td>
-                    <td>{{ $post["text_content"] }}</td>
+                    <td>{{ $post["text"] }}</td>
                     <td>{{ $post["slug"] }}</td>
                     <td>{{ $post["created_at"] }}</td>
+                    <td>
+                        <div class="group-btn-table">
+                            <a href="{{ route("admin.posts.show", $post["slug"]) }}" class="btn btn-warning"><i class="fa-solid fa-eye"></i></a>
+                            <a href="{{ route("admin.posts.edit", ['post' => $post->slug]) }}" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <form action="{{ route("admin.posts.destroy", $post["slug"]) }}" method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
