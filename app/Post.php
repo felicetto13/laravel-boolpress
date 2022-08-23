@@ -10,4 +10,8 @@ class Post extends Model
     protected $fillable = [
         "title", "text"
     ];
+
+    public function userDetail() {
+        return $this->hasOne("App\UserDetail");
+    }
 }
