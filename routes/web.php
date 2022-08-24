@@ -28,5 +28,17 @@ Route::middleware("auth")
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('index');
 
+        Route::get('/users', 'UserController@index')->name('users.index');
+
+        Route::patch('/users/{user}', 'UserController@update')->name('users.upload');
+
+        Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
+        Route::get('/users/{user}', 'UserController@show')->name('users.show');
+        Route::get('/users/create', 'UserController@create')->name('users.create');
+        Route::post('/users/{user}', 'UserController@store')->name('users.store');
+        
+        
+        Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
+
         Route::resource("posts", "PostController");
     });

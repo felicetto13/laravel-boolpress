@@ -110,7 +110,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($slug)
-    {
+    {   
         $post = $this->findBySlug($slug);
         return view("admin.posts.edit", compact("post"));
     }
