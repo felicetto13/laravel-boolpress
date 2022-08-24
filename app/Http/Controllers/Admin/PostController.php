@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Http\Requests\PostRequest;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 class PostController extends Controller
@@ -69,7 +70,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("admin.posts.create");
+        $categories = Category::all();
+        $tags= Tag::all();
+        return view("admin.posts.create", compact("categories", "tags"));
     }
 
     /**
@@ -88,7 +91,9 @@ class PostController extends Controller
         $post->slug = $this->generateSlug($post->title);
         $post->save();
         //reindirizzare su una pagina a piacimento
-
+        if (key_exists("tags", $validatedData)) {
+            $post->tag()->attach($validatedData["tags"]);
+        }
         return redirect()->route("admin.posts.show", $post->slug);
     }
 
@@ -114,7 +119,8 @@ class PostController extends Controller
     {   
         $post = $this->findBySlug($slug);
         $categories = Category::all();
-        return view("admin.posts.edit", compact("post", "categories"));
+        $tags = Tag::all();
+        return view("admin.posts.edit", compact("post", "categories","tags"));
     }
 
     /**
@@ -133,7 +139,11 @@ class PostController extends Controller
             // genero un nuovo slug
             $post->slug = $this->generateSlug($validatedData["title"]);
         }
-
+        if (key_exists("tags", $validatedData)) {
+            $post->tag()->sync($validatedData["tags"]);
+        } else {
+            $post->tag()->sync([]);
+        }
         $post->update($validatedData);
 
         return redirect()->route("admin.posts.show", $post->slug);
@@ -148,7 +158,7 @@ class PostController extends Controller
     public function destroy($slug)
     {
         $post = $this->findBySlug($slug);
-
+        $post->tag()->detach();
         $post->delete();
 
         return redirect()->route("admin.posts.index");

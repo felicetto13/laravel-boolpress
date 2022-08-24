@@ -26,12 +26,25 @@
             <select class="form-control @error('cateogory_id') is-invalid @enderror" name="category_id" id="category_id">
                 <option value=""></option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ $post->category->id === $category->id ? "selected" : "" }}>{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" {{ $post->category->id === $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}</option>
                 @endforeach
                 @error('cateogory_id')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </select>
+            <div class="form-group">
+                <label>Tags</label>
+                <select type="text" name="tags[]" class="form-control @error('tags') is-invalid @enderror" multiple>
+                    @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}" {{ $post->tag->contains($tag) ? 'selected' : '' }}>
+                            {{ $tag->name }}</option>
+                    @endforeach
+                </select>
+                @error('tags')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
             <div class="button-group">
                 <button type="submit" class="btn btn-success">Modifica</button>
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Annulla</a>
