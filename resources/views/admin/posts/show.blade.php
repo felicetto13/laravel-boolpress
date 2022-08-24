@@ -24,7 +24,7 @@
                     <th>Titolo post</th>
                     <th>Testo post</th>
                     <th>Slug</th>
-                    <th>Creato il</th>
+                    <th>categoria</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +33,7 @@
                     <td>{{ $post["title"] }}</td>
                     <td>{{ $post["text"] }}</td>
                     <td>{{ $post["slug"] }}</td>
-                    <td>{{ $post["created_at"] }}</td>
+                    <td>{{ $post->category->name }}</td>
                 </tr>
             </tbody>
         </table>

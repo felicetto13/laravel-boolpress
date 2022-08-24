@@ -8,10 +8,13 @@ class Post extends Model
 {
     //
     protected $fillable = [
-        "title", "text"
+        "title", "text", "category_id"
     ];
 
     public function userDetail() {
         return $this->hasOne("App\UserDetail");
+    }
+    public function category() {
+        return $this->belongsTo("App\Category");
     }
 }

@@ -26,6 +26,7 @@ class PostRequest extends FormRequest
         return [
             "title" => "required|min:10",
             "text" => "required|min:10",
+            "category_id" => "nullable|exists:categories,id"
         ];
     }
     public function messages()
