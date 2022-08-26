@@ -5,9 +5,17 @@
 @section('page_content')
     <div class="container mt-5 py-5">
         <h2>Crea nuovo Post</h2>
-        <form action="{{ route('admin.posts.store') }}" method="post">
+        <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('POST')
+            <div class="input-group">
+                
+                    <label for="image" class="form-label @error('image') is-invalid @enderror">Carica un'immagine di copertina</label>
+                    <input class="form-control" name="image" type="file" id="image">
+                @error('image')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
             <div class="input-group">
                 <label for="title">Titolo Post</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"

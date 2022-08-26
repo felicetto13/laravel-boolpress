@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostRequest extends FormRequest
+class UpdatePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -28,7 +28,7 @@ class PostRequest extends FormRequest
             "text" => "required|min:10",
             "category_id" => "nullable|exists:categories,id",
             "tags" => "nullable|exists:tags,id",
-            "image"=>"required"
+            "image"=>"nullable|image"
         ];
     }
     public function messages()

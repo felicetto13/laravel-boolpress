@@ -6,8 +6,10 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class PostController extends Controller
 {
@@ -86,7 +88,11 @@ class PostController extends Controller
         //validare dati
         $validatedData = $request->validated();
         //creare istanza e salvare dati su db
+
+        $file=$validatedData["image"];
+        $pathImg= Storage::put("/", $file);
         $post = new Post();
+        $post->image = $pathImg;
         $post->fill($validatedData);
         $post->slug = $this->generateSlug($post->title);
         $post->save();
@@ -130,10 +136,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request, $slug)
+    public function update(UpdatePostRequest $request, $slug)
     {
         $validatedData = $request->validated();
         $post = $this->findBySlug($slug);
+
+        
+
+        if(key_exists("image", $validatedData)){
+            if ($post->image) {
+                Storage::delete($post->image);
+            }
+            $img = Storage::put("/", $validatedData["cover_img"]);
+            $post->image = $img;
+        }
 
         if ($validatedData["title"] !== $post->title) {
             // genero un nuovo slug

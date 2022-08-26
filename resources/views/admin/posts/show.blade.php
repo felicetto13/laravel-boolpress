@@ -24,6 +24,7 @@
                     <th>Titolo post</th>
                     <th>Testo post</th>
                     <th>Slug</th>
+                    <th>Image</th>
                     <th>categoria</th>
                 </tr>
             </thead>
@@ -33,7 +34,10 @@
                     <td>{{ $post["title"] }}</td>
                     <td>{{ $post["text"] }}</td>
                     <td>{{ $post["slug"] }}</td>
+                    <td>{{ $post["image"] }}</td>
+                    @if ($post->category)
                     <td>{{ $post->category->name }}</td>
+                    @endif
                 </tr>
             </tbody>
         </table>
