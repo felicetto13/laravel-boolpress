@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Mail\PostCreatedMail;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class PostController extends Controller
@@ -100,6 +102,7 @@ class PostController extends Controller
         if (key_exists("tags", $validatedData)) {
             $post->tag()->attach($validatedData["tags"]);
         }
+        Mail::to("mario.rossi@gmail.com")->send(new PostCreatedMail($post));
         return redirect()->route("admin.posts.show", $post->slug);
     }
 
