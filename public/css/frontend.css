@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";/*!
+@charset "UTF-8";/*!
  * Bootstrap  v5.2.0 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
  * Copyright 2011-2022 Twitter, Inc.
@@ -7,103 +7,5 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-}
-
-header {
-  flex-shrink: 0;
-  background-color: dimgrey;
-}
-
-header ul {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
-
-header ul li {
-  position: relative;
-}
-
-header ul li a {
-  padding: 2rem 3rem;
-  color: white;
-  text-decoration: none;
-  display: inline-block;
-}
-
-header ul li a:hover {
-  color: dimgrey;
-  cursor: pointer;
-  text-decoration: underline;
-  background-color: white;
-  transition: all 0.3s ease;
-}
-
-header ul li > a:hover::after {
-  content: "";
-  height: 8px;
-  background-color: dimgrey;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border: 1px solid white;
-}
-
-main {
-  flex-grow: 1;
-}
-
-table thead {
-  border-bottom: 2px solid black;
-}
-
-table tr th,
-table tr td {
-  padding: 1rem;
-}
-
-table tbody tr td:not(:last-child) {
-  border-right: 1px solid lightgrey;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 0;
-}
-
-.input-group > .form-control {
-  width: 100%;
-}
-
-.button-group {
-  margin-top: 2rem;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-.arrow-moving {
-  cursor: pointer;
-  padding: 0 1rem;
-  color: black;
-}
-
-.arrow-moving > i {
-  transition: transform 1s ease;
-}
-
-.arrow-moving:hover > i {
-  transform: translateX(-10px);
-  color: black;
-}
-
-.group-btn-table {
-  display: flex;
-}
-
-.group-btn-table > *:not(:last-child) {
-  margin-right: 1rem;
 }
 

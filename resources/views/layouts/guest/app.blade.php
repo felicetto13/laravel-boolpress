@@ -9,7 +9,9 @@
     <script src="{{ asset("js/app.js") }}"></script>
 </head>
 <body>
-    @include('partials.guest.header')
-    @yield('page_content')
+   <div id="app">
+
+   </div>
+<script src="{{asset("js/frontend.js")}}"></script>
 </body>
 </html>
