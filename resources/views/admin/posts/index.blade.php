@@ -4,6 +4,10 @@
     
 @section('page_content')
     <div class="p-5 mx-auto">
+        <div class="d-flex justify-content-between">
+            <h2>Lista post</h2>
+            <a href="{{ route("admin.posts.create") }}" class="btn btn-primary"><span class="link-new-post">+</span></a>
+        </div>
         <table >
             <thead>
                 <tr>

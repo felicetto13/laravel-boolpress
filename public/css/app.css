@@ -107,3 +107,15 @@ table tbody tr td:not(:last-child) {
   margin-right: 1rem;
 }
 
+.link-new-post {
+  padding: 1rem;
+  translate: all 0.1s ease;
+  vertical-align: middle;
+}
+
+.link-new-post:hover:after {
+  content: "Inserisci nuovo post";
+  padding: 1rem;
+  translate: all 0.3s ease;
+}
+

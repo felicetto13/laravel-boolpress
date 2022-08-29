@@ -123,3 +123,14 @@ table {
         margin-right: 1rem;
     }
 }
+
+.link-new-post {
+    padding: 1rem;
+        translate: all .1s ease;
+        vertical-align:middle;
+    &:hover:after {
+        content: "Inserisci nuovo post";
+        padding: 1rem;
+        translate: all .3s ease;
+    }
+}
