@@ -31,8 +31,8 @@ export default {
   
   methods: {
     fetchData() {
-      axios.get("api/posts");
-      then((resp) => {
+      axios.get("api/posts")
+      .then((resp) => {
         this.posts = resp.data;
       });
     },

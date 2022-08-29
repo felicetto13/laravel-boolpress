@@ -1,5 +1,5 @@
 <template>
-  <navbar>
+  <nav>
     <div class="container border-bottom py-3 d-flex justify-content-between">
       <h2>Boolpress</h2>
       <ul class="list-unstyled d-flex gap-3 ">
@@ -8,7 +8,7 @@
         <li><a href="">Login</a></li>
       </ul>
     </div>
-  </navbar>
+  </nav>
 </template>
 
 <script>

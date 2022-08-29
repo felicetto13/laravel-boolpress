@@ -1963,8 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchData: function fetchData() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/posts");
-      then(function (resp) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/posts").then(function (resp) {
         _this.posts = resp.data;
       });
     },
@@ -2024,7 +2023,14 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("navbar", [_c("div", {
+  return _vm._m(0);
+};
+
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("nav", [_c("div", {
     staticClass: "container border-bottom py-3 d-flex justify-content-between"
   }, [_c("h2", [_vm._v("Boolpress")]), _vm._v(" "), _c("ul", {
     staticClass: "list-unstyled d-flex gap-3"
@@ -2041,9 +2047,7 @@ var render = function render() {
       href: ""
     }
   }, [_vm._v("Login")])])])])]);
-};
-
-var staticRenderFns = [];
+}];
 render._withStripped = true;
 
 
@@ -14710,7 +14714,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/felicelaterza/boolean/laravel-api/laravel-many-to-many/resources/js/frontend.js */"./resources/js/frontend.js");
+module.exports = __webpack_require__(/*! /Users/felicelaterza/boolean/laravel-api/resources/js/frontend.js */"./resources/js/frontend.js");
 
 
 /***/ })
