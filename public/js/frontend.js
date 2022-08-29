@@ -1969,10 +1969,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     getImageSrc: function getImageSrc(post) {
       if (!post.image) {
-        return "/images/image-placeholder.jpeg";
+        return "/images/image_placeholder.jpg";
       }
 
       return post.image;
+    },
+    getImage: function getImage(event) {
+      event.target.src = "/images/image_placeholder.jpg";
     }
   },
   mounted: function mounted() {
@@ -2082,6 +2085,9 @@ var render = function render() {
       staticClass: "card-img-top",
       attrs: {
         src: _vm.getImageSrc(post)
+      },
+      on: {
+        error: _vm.getImage
       }
     }), _vm._v(" "), _c("div", {
       staticClass: "card-body"

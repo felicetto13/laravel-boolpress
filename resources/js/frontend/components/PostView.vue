@@ -5,7 +5,7 @@
         <div class="card mb-4">
           <!-- <img v-if="post.cover_img" :src="post.cover_img" class="card-img-top">
         <img v-else src="/images/image-placeholder.jpeg" class="card-img-top"> -->
-          <img :src="getImageSrc(post)" class="card-img-top" />
+          <img :src="getImageSrc(post)" @error="getImage" class="card-img-top" />
 
           <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
@@ -38,10 +38,13 @@ export default {
     },
     getImageSrc(post) {
       if (!post.image) {
-        return "/images/image-placeholder.jpeg";
+        return "/images/image_placeholder.jpg";
       }
       return post.image;
-    }
+    },
+    getImage(event) { 
+    event.target.src = "/images/image_placeholder.jpg" 
+} 
   },
   mounted(){
       this.fetchData();
