@@ -25,7 +25,7 @@ export default {
     },
     methods:{
         onsubmit(){
-            axios.post("api/contacts",{
+            axios.get("api/contacts",{
                 title: this.title,
                 text: this.text
             })
