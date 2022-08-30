@@ -4,7 +4,10 @@
 
 @section('page_content')
     <div class="container mt-5 py-5">
-        <h2>Crea nuovo Post</h2>
+        <div class="d-flex justify-content-between">
+            <h2>Crea nuovo post</h2>
+            <a href="{{ route("admin.posts.index") }}" class="btn btn-secondary"><i class="fa fa-solid fa-arrow-left align-middle "></i></a>
+        </div>
         <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('POST')
