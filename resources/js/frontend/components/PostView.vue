@@ -14,7 +14,8 @@
           <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text" v-html="post.text"></p>
-            <router-link :to="{name:'posts.show' , params:{slug:post.slug}}" class="btn btn-primary">Vedi Post</router-link>
+            <router-link :to="{ name: 'posts.show', params: { slug: post.slug } }" class="btn btn-primary">Vedi post
+            </router-link>
           </div>
         </div>
 
@@ -54,7 +55,6 @@ export default {
       event.target.src = "/images/image_placeholder.jpg";
     },
     onChangePage(newPage) {
-      debugger
       this.fetchData(newPage);
     }
   },

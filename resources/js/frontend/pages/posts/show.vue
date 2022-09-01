@@ -1,22 +1,22 @@
 <template>
     <div>
-    <h1>Pagina Show POST # {{ post.id }}</h1>
+    <h1>Pagina Show POST # {{ post?.id }}</h1>
 
-    <h2>{{ post.title }}</h2>
-    <h3>Post di <strong>{{ post.user.name }}</strong></h3>
+    <h2>{{ post?.title }}</h2>
+    
 
-    <img :src="post.cover_img" alt="" style="width: 300px">
-    <p v-html="post.content"></p>
+    <img :src="post?.image" alt="" style="width: 300px">
+    <p v-html="post?.text"></p>
 
-    <div v-if="post.category">
+    <!-- <div v-if="post?.category">
       <h4>Categoria</h4>
       {{ post.category.name }}</div>
-    <div v-if="post.tags.length > 0">
+    <div v-if="post.tag.length > 0">
       <h4>Tags</h4>
       <ul>
-        <li v-for="tag in post.tags" :key="tag.id">{{ tag.name }}</li>
+        <li v-for="tag in post.tag" :key="tag.id">{{ tag.name }}</li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -29,9 +29,11 @@ export default {
         }
     },
     mounted(){
-        axios.get("api/posts"+ this.$route.params.value)
+   
+        axios.get("/api/posts/" + this.$route.params.slug)
             .then((resp) => {
-                const data = resp.data
+console.log(resp.data)
+                const data = resp.data;
                 this.post = data;
             })
     }
